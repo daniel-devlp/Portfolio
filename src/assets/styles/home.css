@@ -1,11 +1,11 @@
-/* home.css - Estilos principales */
+/* home.css - Estilos principales con nueva paleta */
 :root {
-  --primary-color: #2563eb;
-  --secondary-color: #1e40af;
-  --text-color: #1f2937;
-  --light-text: #6b7280;
-  --bg-light: #f9fafb;
-  --bg-dark: #111827;
+  --primary-color: #0F172A; /* Azul oscuro (fondo principal) */
+  --accent-color: #4C1D95; /* Púrpura oscuro (acentos y hover) */
+  --button-color: #115E59; /* Teal oscuro (botones y detalles) */
+  --secondary-bg: #1E293B; /* Gris oscuro (backgrounds secundarios) */
+  --text-color: #CBD5E1; /* Gris claro (textos y iconos) */
+  --highlight-text: #F1F5F9; /* Blanco humo (textos destacados) */
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --transition: all 0.3s ease;
 }
@@ -17,6 +17,7 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
+  color: var(--text-color);
 }
 
 /* Hero Section */
@@ -38,7 +39,7 @@
   font-weight: 800;
   margin-bottom: 1rem;
   line-height: 1.2;
-  background: linear-gradient(to right, #2563eb, #3b82f6);
+  background: linear-gradient(to right, var(--accent-color), var(--button-color));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -47,7 +48,7 @@
 .hero-content h2 {
   font-size: 1.8rem;
   font-weight: 600;
-  color: var(--light-text);
+  color: var(--highlight-text);
   margin-bottom: 1.5rem;
 }
 
@@ -55,6 +56,7 @@
   font-size: 1.2rem;
   max-width: 600px;
   margin-bottom: 2rem;
+  color: var(--highlight-text);
 }
 
 .hero-image {
@@ -70,11 +72,13 @@
   border-radius: 20px;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
+  background-color: var(--secondary-bg);
+  border: 2px solid var(--button-color);
 }
 
 .hero-image img:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
 }
 
 /* Soft Skills Section */
@@ -88,6 +92,7 @@
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
+  color: var(--highlight-text);
 }
 
 .soft-skills h2::after {
@@ -98,7 +103,7 @@
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: var(--primary-color);
+  background: var(--button-color);
   border-radius: 2px;
 }
 
@@ -111,18 +116,20 @@
 }
 
 .skill-card {
-  background: white;
+  background: var(--secondary-bg);
   border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--button-color);
+  color: var(--text-color);
 }
 
 .skill-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  background-color: var(--accent-color);
 }
 
 .skill-card p {
@@ -142,6 +149,7 @@
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
+  color: var(--highlight-text);
 }
 
 .featured-projects h2::after {
@@ -152,7 +160,7 @@
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: var(--primary-color);
+  background: var(--button-color);
   border-radius: 2px;
 }
 
@@ -164,22 +172,24 @@
 }
 
 .project-card {
-  background: white;
+  background: var(--secondary-bg);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--button-color);
+  color: var(--highlight-text);
 }
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
 }
 
 .project-card img {
   width: 100%;
-  height: 200px;
+  height: auto;
+  max-height: 350px;
   object-fit: cover;
 }
 
@@ -187,10 +197,11 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin: 1rem 1.5rem 0.5rem;
+  color: var(--highlight-text);
 }
 
 .project-card p {
-  color: var(--light-text);
+  color: var(--highlight-text);
   margin: 0 1.5rem 1rem;
 }
 
@@ -199,11 +210,12 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   margin: 1rem 1.5rem;
+  color: var(--highlight-text);
 }
 
 .project-tags span {
-  background: #e0e7ff;
-  color: var(--primary-color);
+  background: rgba(17, 94, 89, 0.2);
+  color: var(--highlight-text);
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.8rem;
@@ -214,8 +226,8 @@
   display: inline-block;
   margin: 1rem 1.5rem 1.5rem;
   padding: 0.5rem 1.5rem;
-  background: var(--primary-color);
-  color: white;
+  background: var(--button-color);
+  color: var(--highlight-text);
   border-radius: 6px;
   text-decoration: none;
   font-weight: 500;
@@ -223,7 +235,7 @@
 }
 
 .project-link:hover {
-  background: var(--secondary-color);
+  background: var(--accent-color);
   transform: translateY(-2px);
 }
 
@@ -231,14 +243,14 @@
   display: block;
   text-align: center;
   margin-top: 2rem;
-  color: var(--primary-color);
+  color: var(--highlight-text);
   font-weight: 600;
   text-decoration: none;
   transition: var(--transition);
 }
 
 .see-more:hover {
-  color: var(--secondary-color);
+  color: var(--accent-color);
   text-decoration: underline;
 }
 
@@ -252,6 +264,7 @@
   margin-bottom: 2rem;
   position: relative;
   display: inline-block;
+  color: var(--highlight-text);
 }
 
 .technologies h2::after {
@@ -262,7 +275,7 @@
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: #2563eb;
+  background: var(--button-color);
 }
 
 .tech-grid {
@@ -280,35 +293,41 @@
   align-items: center;
   gap: 0.8rem;
   padding: 1.5rem 1rem;
-  background: white;
+  background: var(--secondary-bg);
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  border: 1px solid var(--button-color);
 }
 
 .tech-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: var(--accent-color);
 }
 
 .tech-icon {
   width: 50px;
   height: 50px;
   object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 .tech-name {
-  font-weight: 500;
+   font-weight: 500;
   font-size: 0.9rem;
-  color: #333;
+  color: var(--highlight-text); /* Usa el color definido en tu paleta */
+  margin-top: 0.5rem;
+  text-align: center;
 }
 
 /* Contact Section */
 .contact {
   padding: 5rem 0;
-  background: var(--bg-light);
+  background: var(--secondary-bg);
   border-radius: 20px;
   margin: 4rem 0;
+  border: 1px solid var(--button-color);
 }
 
 .contact h2 {
@@ -317,6 +336,7 @@
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
+  color: var(--highlight-text);
 }
 
 .contact h2::after {
@@ -327,7 +347,7 @@
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: var(--primary-color);
+  background: var(--button-color);
   border-radius: 2px;
 }
 
@@ -342,17 +362,19 @@
 .contact-form input,
 .contact-form textarea {
   padding: 1rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--button-color);
   border-radius: 8px;
   font-size: 1rem;
   transition: var(--transition);
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.2);
 }
 
 .contact-form textarea {
@@ -362,8 +384,8 @@
 
 .contact-form button {
   padding: 1rem;
-  background: var(--primary-color);
-  color: white;
+  background: var(--button-color);
+  color: var(--highlight-text);
   border: none;
   border-radius: 8px;
   font-size: 1rem;
@@ -373,7 +395,7 @@
 }
 
 .contact-form button:hover {
-  background: var(--secondary-color);
+  background: var(--accent-color);
   transform: translateY(-2px);
 }
 
@@ -391,7 +413,7 @@
 }
 
 .social-links a:hover {
-  color: var(--primary-color);
+  color: var(--button-color);
   transform: translateY(-3px);
 }
 

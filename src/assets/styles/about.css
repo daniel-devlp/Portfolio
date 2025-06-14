@@ -17,6 +17,7 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-color);
   line-height: 1.6;
+  margin-top: 4rem; 
 }
 
 /* Hero Section */
@@ -72,6 +73,21 @@
   font-size: 1.1rem;
   color: var(--light-text);
   max-width: 600px;
+}
+.download-cv-button{
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 15px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+.download-cv-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* About Details */

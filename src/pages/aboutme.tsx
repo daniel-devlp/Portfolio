@@ -15,6 +15,17 @@ const About: React.FC = () => {
             Una introducción más detallada sobre quién eres, tu trayectoria profesional, 
             tus intereses en el desarrollo de software y lo que te motiva.
           </p>
+          <button 
+           className="download-cv-button" 
+           onClick={() => {
+            const link = document.createElement('a');
+            link.href = '/path-to-your-cv/cv.pdf'; // Ruta al archivo
+            link.download = 'FullStack_Daniel_Moyolema_CV.pdf'; // Nombre del archivo
+            link.click();
+  }}
+>
+  Descargar CV
+</button>
         </div>
       </section>
 
