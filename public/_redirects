@@ -1,0 +1,6 @@
+# Redirect rules for Netlify
+/*    /index.html   200
+
+# Social media shortcuts  
+/github   https://github.com/daniel-devlp   301!
+/linkedin https://linkedin.com/in/daniel-developer   301!

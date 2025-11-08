@@ -29,7 +29,7 @@ const About: React.FC = () => {
   const [skillsRef, skillsVisible] = useScrollAnimation();
   const [experienceRef, experienceVisible] = useScrollAnimation();
   const [educationRef, educationVisible] = useScrollAnimation();
-  const [interestsRef, interestsVisible] = useScrollAnimation();
+  // const [interestsRef, interestsVisible] = useScrollAnimation();
 
   // Categorized skills for better organization
   const skillCategories = [
@@ -102,7 +102,8 @@ const About: React.FC = () => {
     }
   ];
 
-  // Personal interests
+  // Personal interests (commented out as not currently used)
+  /*
   const interests = [
     {
       icon: '💻',
@@ -112,7 +113,7 @@ const About: React.FC = () => {
     {
       icon: '📚',
       title: 'Learning',
-      description: 'Continuous learning through courses, books, and tech conferences'
+      description: 'Continuous learning through courses, books and tech conferences'
     },
     {
       icon: '🎮',
@@ -135,6 +136,7 @@ const About: React.FC = () => {
       description: 'Exploring new places and experiencing different cultures'
     }
   ];
+  */
 
   // Get proficiency color based on level
   const getProficiencyColor = (level: string): string => {

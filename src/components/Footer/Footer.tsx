@@ -16,11 +16,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PERSONAL_INFO, NAVIGATION_ITEMS } from '../../constants';
-import { useScrollAnimation } from '../../hooks';
+// import { useScrollAnimation } from '../../hooks';
 import './Footer.css';
 
 const Footer: React.FC = () => {
-  const [footerRef, isVisible] = useScrollAnimation();
+  // const [footerRef, isVisible] = useScrollAnimation();
 
   const currentYear = new Date().getFullYear();
 
