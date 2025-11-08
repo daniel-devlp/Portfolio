@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="portfolioGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f0f0f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0e0e0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="96" cy="96" r="90.24" fill="#000000" stroke="url(#portfolioGradient)" stroke-width="3.072"/>
+  
+  <!-- Developer Brackets -->
+  <path d="M51.84 67.19999999999999 L38.400000000000006 82.56 L38.400000000000006 109.44 L51.84 124.80000000000001" stroke="url(#portfolioGradient)" stroke-width="4.6080000000000005" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M140.16 67.19999999999999 L153.60000000000002 82.56 L153.60000000000002 109.44 L140.16 124.80000000000001" stroke="url(#portfolioGradient)" stroke-width="4.6080000000000005" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Center Code Symbol -->
+  <circle cx="96" cy="96" r="23.04" fill="url(#portfolioGradient)"/>
+  
+  <!-- Letter D for Daniel -->
+  <text x="96" y="97.92" font-family="Arial, sans-serif" font-size="34.56" font-weight="bold" text-anchor="middle" fill="#000000">D</text>
+  
+  <!-- Code dots -->
+  <circle cx="74.88" cy="74.88" r="2.3040000000000003" fill="url(#portfolioGradient)"/>
+  <circle cx="117.12" cy="74.88" r="2.3040000000000003" fill="url(#portfolioGradient)"/>
+  <circle cx="74.88" cy="117.12" r="2.3040000000000003" fill="url(#portfolioGradient)"/>
+  <circle cx="117.12" cy="117.12" r="2.3040000000000003" fill="url(#portfolioGradient)"/>
+</svg>
