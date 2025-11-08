@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
-  // Close mobile menu on escape key
+  // Close mobile menu on escape key and handle focus
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -51,15 +51,30 @@ const Navbar: React.FC = () => {
       }
     };
 
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as Element;
+      if (isMobileMenuOpen && !target.closest('.navbar__mobile-menu') && !target.closest('.navbar__mobile-toggle')) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
     if (isMobileMenuOpen) {
       document.addEventListener('keydown', handleEscape);
+      document.addEventListener('mousedown', handleClickOutside);
       document.body.style.overflow = 'hidden'; // Prevent scroll when menu is open
+      
+      // Focus management
+      const firstFocusableElement = document.querySelector('.navbar__mobile-menu .navbar__mobile-link') as HTMLElement;
+      if (firstFocusableElement) {
+        firstFocusableElement.focus();
+      }
     } else {
       document.body.style.overflow = '';
     }
 
     return () => {
       document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('mousedown', handleClickOutside);
       document.body.style.overflow = '';
     };
   }, [isMobileMenuOpen]);
