@@ -23,6 +23,7 @@ import Navbar from './components/Navigation/Navbar';
 import Footer from './components/Footer/Footer';
 import LoadingSpinner from './components/UI/LoadingSpinner';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import WhatsAppButton from './components/WhatsAppButton';
 
 // Lazy load pages for better performance
 const Home = React.lazy(() => import('./pages/Home/Home'));
@@ -90,6 +91,13 @@ const AppLayout: React.FC = () => {
         - Copyright and additional navigation
       */}
       <Footer />
+      
+      {/* 
+        WhatsApp Float Button
+        - Fixed position contact button
+        - Available on all pages
+      */}
+      <WhatsAppButton />
     </div>
   );
 };

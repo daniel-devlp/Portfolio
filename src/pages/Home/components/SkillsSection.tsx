@@ -13,7 +13,6 @@ import { useScrollAnimation } from '../../../hooks';
 import { TECHNOLOGIES } from '../../../constants';
 import { type TechnologyCategory } from '../../../types';
 import { getStaggerDelay } from '../../../utils';
-import './SkillsSection.css';
 
 const SkillsSection: React.FC = () => {
   const [sectionRef, isVisible] = useScrollAnimation();
@@ -34,43 +33,43 @@ const SkillsSection: React.FC = () => {
     ? TECHNOLOGIES 
     : TECHNOLOGIES.filter(tech => tech.category === activeCategory);
 
-  // Get proficiency color
-  const getProficiencyColor = (proficiency: string) => {
+  // Get proficiency color class
+  const getProficiencyColorClass = (proficiency: string) => {
     switch (proficiency) {
-      case 'expert': return 'var(--color-accent-400)';
-      case 'advanced': return 'var(--color-primary-400)';
-      case 'intermediate': return 'var(--color-secondary-400)';
-      case 'beginner': return 'var(--text-secondary)';
-      default: return 'var(--text-tertiary)';
+      case 'expert': return 'text-accent-cyan';
+      case 'advanced': return 'text-blue-400';
+      case 'intermediate': return 'text-purple-400';
+      case 'beginner': return 'text-text-secondary';
+      default: return 'text-text-muted';
     }
   };
 
   return (
     <section 
       ref={sectionRef}
-      className={`skills ${isVisible ? 'skills--visible' : ''}`}
+      className={`py-20 lg:py-32 bg-black relative overflow-hidden ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
       id="skills"
     >
-      <div className="skills__container container">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="skills__header">
-          <h2 className="skills__title">
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white animate-slide-up">
             Skills & Technologies
           </h2>
-          <p className="skills__description">
+          <p className="text-lg text-text-secondary max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{animationDelay: '0.2s'}}>
             A comprehensive overview of my technical expertise and the tools I use 
             to bring ideas to life. From frontend frameworks to backend systems.
           </p>
         </div>
 
         {/* Category Filter */}
-        <div className="skills__filters">
+        <div className="flex flex-wrap justify-center gap-3 mb-16 animate-slide-up" style={{animationDelay: '0.4s'}}>
           <button
             onClick={() => setActiveCategory('all')}
-            className={`skills__filter ${activeCategory === 'all' ? 'skills__filter--active' : ''}`}
+            className={`px-6 py-3 rounded-full font-medium transition-all duration-300 border ${activeCategory === 'all' ? 'bg-accent-cyan text-black border-accent-cyan' : 'text-text-secondary border-border-light hover:text-white hover:border-accent-cyan/50 hover:bg-accent-cyan/10'}`}
           >
             All Skills
-            <span className="skills__filter-count">({TECHNOLOGIES.length})</span>
+            <span className="ml-1 text-sm opacity-70">({TECHNOLOGIES.length})</span>
           </button>
           
           {Object.entries(categories).map(([key, label]) => {
@@ -79,56 +78,54 @@ const SkillsSection: React.FC = () => {
               <button
                 key={key}
                 onClick={() => setActiveCategory(key as TechnologyCategory)}
-                className={`skills__filter ${activeCategory === key ? 'skills__filter--active' : ''}`}
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 border ${activeCategory === key ? 'bg-accent-cyan text-black border-accent-cyan' : 'text-text-secondary border-border-light hover:text-white hover:border-accent-cyan/50 hover:bg-accent-cyan/10'}`}
               >
                 {label}
-                <span className="skills__filter-count">({count})</span>
+                <span className="ml-1 text-sm opacity-70">({count})</span>
               </button>
             );
           })}
         </div>
 
         {/* Skills Grid */}
-        <div className="skills__grid">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-16">
           {filteredTechnologies.map((tech, index) => (
             <SkillCard
               key={tech.id}
               technology={tech}
               index={index}
               isVisible={isVisible}
-              getProficiencyColor={getProficiencyColor}
+              getProficiencyColorClass={getProficiencyColorClass}
             />
           ))}
         </div>
 
         {/* Skills Summary */}
-        <div className="skills__summary">
-          <div className="skills__summary-stats">
-            <div className="skills__stat">
-              <span className="skills__stat-number">{TECHNOLOGIES.length}+</span>
-              <span className="skills__stat-label">Technologies</span>
+        <div className="text-center animate-fade-in" style={{animationDelay: '0.6s'}}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
+            <div className="space-y-2">
+              <span className="block text-3xl sm:text-4xl font-bold text-accent-cyan">{TECHNOLOGIES.length}+</span>
+              <span className="text-text-secondary font-medium">Technologies</span>
             </div>
-            <div className="skills__stat">
-              <span className="skills__stat-number">
+            <div className="space-y-2">
+              <span className="block text-3xl sm:text-4xl font-bold text-blue-400">
                 {TECHNOLOGIES.filter(tech => tech.proficiency === 'advanced' || tech.proficiency === 'expert').length}+
               </span>
-              <span className="skills__stat-label">Advanced Skills</span>
+              <span className="text-text-secondary font-medium">Advanced Skills</span>
             </div>
-            <div className="skills__stat">
-              <span className="skills__stat-number">{Object.keys(categories).length}</span>
-              <span className="skills__stat-label">Categories</span>
+            <div className="space-y-2">
+              <span className="block text-3xl sm:text-4xl font-bold text-purple-400">{Object.keys(categories).length}</span>
+              <span className="text-text-secondary font-medium">Categories</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Background decoration */}
-      <div className="skills__decoration" aria-hidden="true">
-        <div className="skills__decoration-shapes">
-          <div className="skills__shape skills__shape--1"></div>
-          <div className="skills__shape skills__shape--2"></div>
-          <div className="skills__shape skills__shape--3"></div>
-        </div>
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-accent-cyan/5 rounded-full blur-2xl animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-blue-500/5 rounded-full blur-2xl animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/2 w-60 h-60 bg-purple-500/3 rounded-full blur-3xl animate-pulse"></div>
       </div>
     </section>
   );
@@ -141,46 +138,41 @@ interface SkillCardProps {
   technology: typeof TECHNOLOGIES[0];
   index: number;
   isVisible: boolean;
-  getProficiencyColor: (proficiency: string) => string;
+  getProficiencyColorClass: (proficiency: string) => string;
 }
 
 const SkillCard: React.FC<SkillCardProps> = ({ 
   technology, 
   index, 
   isVisible, 
-  getProficiencyColor 
+  getProficiencyColorClass 
 }) => {
   return (
     <div 
-      className={`skill-card ${isVisible ? 'skill-card--visible' : ''}`}
+      className={`group bg-bg-card backdrop-blur-xl border border-border-light rounded-2xl p-6 transition-all duration-300 hover:border-accent-cyan/50 hover:-translate-y-2 hover:shadow-glow ${isVisible ? 'animate-scale-in' : 'opacity-0 scale-90'}`}
       style={{
         animationDelay: `${getStaggerDelay(index, 0.1, 0.05)}s`
       }}
     >
-      <div className="skill-card__content">
+      <div className="flex flex-col items-center space-y-4">
         {/* Skill Icon */}
-        <div className="skill-card__icon">
+        <div className="w-12 h-12 flex items-center justify-center bg-bg-glass rounded-xl group-hover:scale-110 transition-transform duration-300">
           <img 
             src={technology.icon} 
             alt={`${technology.name} icon`}
+            className="w-8 h-8 object-contain"
             loading="lazy"
           />
         </div>
 
         {/* Skill Info */}
-        <div className="skill-card__info">
-          <h3 className="skill-card__name">{technology.name}</h3>
-          <span 
-            className="skill-card__category"
-            style={{ color: getProficiencyColor(technology.proficiency) }}
-          >
+        <div className="text-center space-y-1">
+          <h3 className="font-semibold text-white text-sm">{technology.name}</h3>
+          <span className={`text-xs font-medium ${getProficiencyColorClass(technology.proficiency)}`}>
             {technology.category.charAt(0).toUpperCase() + technology.category.slice(1)}
           </span>
         </div>
-
       </div>
-
-     
     </div>
   );
 };

@@ -12,7 +12,6 @@
  */
 
 import React from 'react';
-import './LoadingSpinner.css';
 
 interface LoadingSpinnerProps {
   /** Size of the spinner in pixels */
@@ -27,26 +26,28 @@ interface LoadingSpinnerProps {
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   size = 40,
-  color = 'var(--color-accent-500)',
+  color = '#64ffda', // accent-cyan
   className = '',
   message = 'Loading...'
 }) => {
   return (
     <div 
-      className={`loading-spinner ${className}`}
+      className={`inline-flex items-center justify-center ${className}`}
       role="status"
       aria-label={message}
-      style={{ 
-        '--spinner-size': `${size}px`,
-        '--spinner-color': color 
-      } as React.CSSProperties}
     >
-      <div className="loading-spinner__circle">
-        <div className="loading-spinner__inner"></div>
+      <div 
+        className="animate-spin rounded-full border-4 border-gray-600 border-t-transparent"
+        style={{ 
+          width: `${size}px`,
+          height: `${size}px`,
+          borderTopColor: color
+        }}
+      >
       </div>
       
       {/* Screen reader text */}
-      <span className="visually-hidden">{message}</span>
+      <span className="sr-only">{message}</span>
     </div>
   );
 };

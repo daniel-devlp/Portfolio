@@ -11,8 +11,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollAnimation } from '../../../hooks';
-import { PERSONAL_INFO } from '../../../constants';
-import './CTASection.css';
+import { PERSONAL_INFO, WHATSAPP_CONFIG } from '../../../constants';
 
 const CTASection: React.FC = () => {
   const [sectionRef, isVisible] = useScrollAnimation();
@@ -20,15 +19,14 @@ const CTASection: React.FC = () => {
   const contactMethods = [
     {
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-          <polyline points="22,6 12,13 2,6"/>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.56-.01-.188 0-.495.074-.754.372-.26.297-.99.968-.99 2.359 0 1.39 1.016 2.734 1.157 2.931.14.198 2.007 3.065 4.862 4.299.681.295 1.213.471 1.627.602.682.217 1.303.186 1.793.113.547-.081 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.012 2.163c-5.507 0-9.986 4.479-9.986 9.986 0 1.771.465 3.434 1.279 4.876L2.037 21.2l4.273-1.236c1.4.768 2.999 1.174 4.702 1.174 5.507 0 9.986-4.479 9.986-9.986S17.519 2.163 12.012 2.163zm0 18.06c-4.45 0-8.073-3.623-8.073-8.074 0-4.45 3.623-8.073 8.073-8.073s8.074 3.623 8.074 8.073c0 4.451-3.624 8.074-8.074 8.074z"/>
         </svg>
       ),
-      title: 'Email Me',
+      title: 'WhatsApp Me',
       description: 'Get in touch directly',
-      action: 'Send Email',
-      href: `mailto:${PERSONAL_INFO.email}`,
+      action: 'Send Message',
+      href: WHATSAPP_CONFIG.formatMessage(),
       primary: true
     },
     {
@@ -60,37 +58,37 @@ const CTASection: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className={`cta ${isVisible ? 'cta--visible' : ''}`}
+      className={`py-20 lg:py-32 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
       id="contact-cta"
     >
-      <div className="cta__container container">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Main CTA Content */}
-        <div className="cta__content">
-          <div className="cta__text">
-            <h2 className="cta__title">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+          <div className="space-y-8">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight animate-slide-up">
               Let's Build Something Amazing Together
             </h2>
-            <p className="cta__description">
+            <p className="text-lg text-text-secondary leading-relaxed animate-fade-in" style={{animationDelay: '0.2s'}}>
               Ready to bring your ideas to life? I'm always excited to work on new projects 
               and collaborate with fellow developers, designers, and entrepreneurs. Whether you 
               have a specific project in mind or just want to chat about technology, I'd love to hear from you.
             </p>
             
-            <div className="cta__highlights">
-              <div className="cta__highlight">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <div className="space-y-4 animate-slide-up" style={{animationDelay: '0.4s'}}>
+              <div className="flex items-center gap-3 text-text-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-accent-cyan">
                   <polyline points="20,6 9,17 4,12"/>
                 </svg>
                 <span>Quick response time</span>
               </div>
-              <div className="cta__highlight">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <div className="flex items-center gap-3 text-text-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-accent-cyan">
                   <polyline points="20,6 9,17 4,12"/>
                 </svg>
                 <span>Collaborative approach</span>
               </div>
-              <div className="cta__highlight">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <div className="flex items-center gap-3 text-text-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-accent-cyan">
                   <polyline points="20,6 9,17 4,12"/>
                 </svg>
                 <span>Quality-focused development</span>
@@ -99,7 +97,7 @@ const CTASection: React.FC = () => {
           </div>
 
           {/* Contact Methods */}
-          <div className="cta__methods">
+          <div className="space-y-4">
             {contactMethods.map((method, index) => (
               <ContactMethod
                 key={method.title}
@@ -112,28 +110,30 @@ const CTASection: React.FC = () => {
         </div>
 
         {/* Secondary CTA */}
-        <div className="cta__secondary">
-          <div className="cta__secondary-content">
-            <h3 className="cta__secondary-title">
+        <div className="bg-bg-card backdrop-blur-xl border border-border-light rounded-3xl p-8 lg:p-12 text-center animate-fade-in" style={{animationDelay: '0.8s'}}>
+          <div className="max-w-2xl mx-auto space-y-6">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white">
               Prefer a detailed conversation?
             </h3>
-            <p className="cta__secondary-description">
+            <p className="text-text-secondary leading-relaxed">
               Fill out the contact form with your project details and I'll get back to you within 24 hours.
             </p>
-            <Link to="/contact" className="cta__form-button">
-              <span>Open Contact Form</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent-cyan to-blue-500 text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group relative overflow-hidden">
+              <span className="relative z-10">Open Contact Form</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="relative z-10 transition-transform duration-200 group-hover:translate-x-1">
                 <path d="m9 18 6-6-6-6"/>
               </svg>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
             </Link>
           </div>
         </div>
       </div>
 
       {/* Background decoration */}
-      <div className="cta__decoration" aria-hidden="true">
-        <div className="cta__decoration-gradient"></div>
-        <div className="cta__decoration-pattern"></div>
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-cyan/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent-cyan/3 to-transparent animate-gradient-x"></div>
       </div>
     </section>
   );
@@ -157,58 +157,48 @@ interface ContactMethodProps {
 }
 
 const ContactMethod: React.FC<ContactMethodProps> = ({ method, index, isVisible }) => {
+  const baseClasses = `group block p-6 bg-bg-card backdrop-blur-xl border border-border-light rounded-2xl transition-all duration-300 hover:border-accent-cyan/50 hover:-translate-y-1 hover:shadow-glow ${method.primary ? 'ring-2 ring-accent-cyan/20' : ''} ${isVisible ? 'animate-scale-in' : 'opacity-0 scale-90'}`;
+  const animationDelay = { animationDelay: `${0.6 + index * 0.1}s` };
+
+  const content = (
+    <>
+      <div className={`flex items-center justify-center w-12 h-12 rounded-xl mb-4 transition-all duration-300 group-hover:scale-110 ${
+        method.primary ? 'bg-accent-cyan text-black' : 'bg-bg-glass text-accent-cyan'
+      }`}>
+        {method.icon}
+      </div>
+      
+      <div className="space-y-2 mb-4">
+        <h4 className="text-lg font-semibold text-white group-hover:text-accent-cyan transition-colors duration-300">{method.title}</h4>
+        <p className="text-text-secondary text-sm">{method.description}</p>
+      </div>
+      
+      <div className="flex items-center gap-2 text-sm font-medium text-accent-cyan">
+        <span>{method.action}</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="transition-transform duration-200 group-hover:translate-x-1">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </div>
+    </>
+  );
+
   return (
     <div
-      className={`contact-method ${method.primary ? 'contact-method--primary' : ''} ${
-        isVisible ? 'contact-method--visible' : ''
-      }`}
-      style={{
-        animationDelay: `${0.6 + index * 0.1}s`
-      }}
+      className={baseClasses}
+      style={animationDelay}
     >
       {method.external ? (
         <a
           href={method.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="contact-method__link"
+          className="block"
         >
-          <div className="contact-method__icon">
-            {method.icon}
-          </div>
-          
-          <div className="contact-method__content">
-            <h4 className="contact-method__title">{method.title}</h4>
-            <p className="contact-method__description">{method.description}</p>
-          </div>
-          
-          <div className="contact-method__action">
-            <span>{method.action}</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="m9 18 6-6-6-6"/>
-            </svg>
-          </div>
+          {content}
         </a>
       ) : (
-        <a
-          href={method.href}
-          className="contact-method__link"
-        >
-          <div className="contact-method__icon">
-            {method.icon}
-          </div>
-          
-          <div className="contact-method__content">
-            <h4 className="contact-method__title">{method.title}</h4>
-            <p className="contact-method__description">{method.description}</p>
-          </div>
-          
-          <div className="contact-method__action">
-            <span>{method.action}</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="m9 18 6-6-6-6"/>
-            </svg>
-          </div>
+        <a href={method.href} className="block">
+          {content}
         </a>
       )}
     </div>

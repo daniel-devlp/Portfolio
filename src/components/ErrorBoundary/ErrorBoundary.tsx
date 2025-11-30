@@ -12,7 +12,6 @@
  */
 
 import React, { Component, ErrorInfo, ReactNode } from 'react';
-import './ErrorBoundary.css';
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -103,16 +102,16 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
       // Default error UI
       return (
-        <div className="error-boundary">
-          <div className="error-boundary__content">
-            <div className="error-boundary__icon">
+        <div className="min-h-screen flex items-center justify-center bg-black bg-gradient-dark p-4">
+          <div className="max-w-md w-full bg-gradient-card-dark backdrop-blur-xl border border-border-light rounded-xl p-8 text-center shadow-2xl">
+            <div className="mb-6 flex justify-center">
               <svg 
                 width="64" 
                 height="64" 
                 viewBox="0 0 24 24" 
                 fill="none" 
                 stroke="currentColor"
-                className="error-boundary__icon-svg"
+                className="text-red-500"
               >
                 <circle cx="12" cy="12" r="10"/>
                 <line x1="12" y1="8" x2="12" y2="12"/>
@@ -120,29 +119,29 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
               </svg>
             </div>
             
-            <h2 className="error-boundary__title">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Oops! Something went wrong
             </h2>
             
-            <p className="error-boundary__message">
+            <p className="text-text-secondary leading-relaxed mb-6">
               We're sorry for the inconvenience. An unexpected error occurred while loading this page.
             </p>
 
             {/* Show error details in development */}
             {process.env.NODE_ENV === 'development' && this.state.error && (
-              <details className="error-boundary__details">
-                <summary>Error Details (Development)</summary>
-                <pre className="error-boundary__error-text">
+              <details className="text-left mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+                <summary className="cursor-pointer text-red-400 font-medium mb-2">Error Details (Development)</summary>
+                <pre className="text-xs text-red-300 whitespace-pre-wrap overflow-auto max-h-32">
                   {this.state.error.toString()}
                   {this.state.errorInfo?.componentStack}
                 </pre>
               </details>
             )}
 
-            <div className="error-boundary__actions">
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <button 
                 onClick={this.handleRetry}
-                className="error-boundary__button error-boundary__button--primary"
+                className="flex-1 px-6 py-3 bg-accent-cyan text-gray-900 font-semibold rounded-xl hover:bg-accent-cyan/90 transform hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-accent-cyan/25"
                 type="button"
               >
                 Try Again
@@ -150,18 +149,18 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
               
               <button 
                 onClick={this.handleReload}
-                className="error-boundary__button error-boundary__button--secondary"
+                className="flex-1 px-6 py-3 bg-transparent border-2 border-accent-cyan text-accent-cyan font-semibold rounded-xl hover:bg-accent-cyan hover:text-gray-900 transform hover:-translate-y-1 transition-all duration-300 hover:shadow-lg hover:shadow-accent-cyan/25"
                 type="button"
               >
                 Reload Page
               </button>
             </div>
 
-            <p className="error-boundary__help">
+            <p className="text-sm text-text-secondary">
               If the problem persists, please{' '}
               <a 
                 href="mailto:your.email@example.com" 
-                className="error-boundary__link"
+                className="text-accent-cyan hover:text-accent-cyan/80 transition-colors underline"
               >
                 contact support
               </a>

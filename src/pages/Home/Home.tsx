@@ -17,7 +17,6 @@ import HeroSection from './components/HeroSection';
 import FeaturedProjects from './components/FeaturedProjects';
 import SkillsSection from './components/SkillsSection';
 import CTASection from './components/CTASection';
-import './Home.css';
 
 const Home: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,7 +31,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className={`home ${isVisible ? 'home--visible' : ''}`}>
+    <main className={`min-h-screen pt-16 bg-black ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
       {/* Hero Section - Personal introduction and call-to-action */}
       <HeroSection />
 
@@ -44,7 +43,7 @@ const Home: React.FC = () => {
 
       {/* Call-to-Action - Contact encouragement */}
       <CTASection />
-    </div>
+    </main>
   );
 };
 

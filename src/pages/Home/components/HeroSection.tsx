@@ -13,7 +13,6 @@ import { Link } from 'react-router-dom';
 import { useTypingAnimation } from '../../../hooks';
 import { PERSONAL_INFO } from '../../../constants';
 import profileImage from '../../../assets/images/profile1.jpg';
-import './HeroSection.css';
 
 const HeroSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,53 +29,54 @@ const HeroSection: React.FC = () => {
 
   return (
     <section 
-      className={`hero ${isVisible ? 'hero--visible' : ''}`}
+      className={`min-h-screen flex items-center justify-center relative overflow-hidden bg-black ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
       id="hero"
     >
-      <div className="hero__container container">
-        <div className="hero__content">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[80vh]">
           {/* Text Content */}
-          <div className="hero__text">
-            <div className="hero__greeting">
-              <span className="hero__greeting-text">Hello, I'm</span>
-              <div className="hero__greeting-wave">👋</div>
+          <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
+            <div className="flex items-center justify-center lg:justify-start gap-3 animate-slide-in-left">
+              <span className="text-lg text-text-secondary font-medium">Hello, I'm</span>
+              <div className="text-2xl animate-bounce-soft">👋</div>
             </div>
 
-            <h1 className="hero__name">
-              <span className="hero__name-text">{PERSONAL_INFO.name}</span>
-              <div className="hero__name-underline"></div>
-            </h1>
+            <div className="space-y-4 animate-slide-up" style={{animationDelay: '0.2s'}}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white relative">
+                <span>{PERSONAL_INFO.name}</span>
+                <div className="absolute -bottom-2 left-0 lg:left-0 right-0 lg:right-auto h-1 bg-gradient-to-r from-accent-cyan to-blue-400 rounded-full animate-scale-in" style={{animationDelay: '0.8s'}}></div>
+              </h1>
 
-            <div className="hero__title-container">
-              <h2 className="hero__title">
-                <span className="hero__title-prefix">A </span>
-                <span className="hero__title-animated">{typedTitle}</span>
-                <span className="hero__title-cursor">|</span>
-              </h2>
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-text-secondary">
+                <span>A </span>
+                <span className="text-accent-cyan font-mono">{typedTitle}</span>
+                <span className="animate-blink text-accent-cyan">|</span>
+              </div>
             </div>
 
-            <p className="hero__description">
+            <p className="text-lg text-text-secondary leading-relaxed max-w-2xl animate-fade-in" style={{animationDelay: '0.4s'}}>
               {PERSONAL_INFO.bio}
             </p>
 
             {/* Action Buttons */}
-            <div className="hero__actions">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" style={{animationDelay: '0.6s'}}>
               <Link 
                 to="/projects" 
-                className="hero__cta hero__cta--primary"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent-cyan to-blue-500 text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group relative overflow-hidden"
               >
-                <span>View My Work</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <span className="relative z-10">View My Work</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="relative z-10 transition-transform duration-200 group-hover:translate-x-1">
                   <path d="m9 18 6-6-6-6"/>
                 </svg>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
               </Link>
 
               <Link 
                 to="/contact" 
-                className="hero__cta hero__cta--secondary"
+                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/20 text-white font-semibold rounded-full transition-all duration-300 hover:bg-white/10 hover:border-accent-cyan/50 hover:-translate-y-1 group"
               >
                 <span>Get In Touch</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="transition-transform duration-200 group-hover:translate-x-1">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                   <polyline points="22,6 12,13 2,6"/>
                 </svg>
@@ -84,12 +84,12 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* Social Links */}
-            <div className="hero__social">
+            <div className="flex gap-4 justify-center lg:justify-start animate-fade-in" style={{animationDelay: '0.8s'}}>
               <a 
                 href={PERSONAL_INFO.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hero__social-link"
+                className="flex items-center justify-center w-12 h-12 text-text-secondary border border-border-light rounded-xl transition-all duration-300 hover:text-white hover:border-accent-cyan/50 hover:-translate-y-1 hover:rotate-6 hover:shadow-xl bg-bg-glass backdrop-blur-lg"
                 aria-label="GitHub Profile"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -101,7 +101,7 @@ const HeroSection: React.FC = () => {
                 href={PERSONAL_INFO.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hero__social-link"
+                className="flex items-center justify-center w-12 h-12 text-text-secondary border border-border-light rounded-xl transition-all duration-300 hover:text-white hover:border-accent-cyan/50 hover:-translate-y-1 hover:rotate-6 hover:shadow-xl bg-bg-glass backdrop-blur-lg"
                 aria-label="LinkedIn Profile"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -112,43 +112,47 @@ const HeroSection: React.FC = () => {
           </div>
 
           {/* Profile Image */}
-          <div className="hero__image">
-            <div className="hero__image-container">
-              <img 
-                src={profileImage} 
-                alt={`${PERSONAL_INFO.name} - Professional headshot`}
-                className="hero__image-photo"
-                loading="eager"
-              />
-              <div className="hero__image-decoration"></div>
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+            <div className="relative animate-float">
+              <div className="relative z-10">
+                <img 
+                  src={profileImage} 
+                  alt={`${PERSONAL_INFO.name} - Professional headshot`}
+                  className="w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-3xl shadow-2xl border-4 border-white/10 backdrop-blur-xl"
+                  loading="eager"
+                />
+              </div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-accent-cyan/30 to-blue-500/30 rounded-3xl blur-xl animate-pulse-glow"></div>
+              <div className="absolute top-4 -right-4 w-24 h-24 bg-accent-cyan/10 rounded-full blur-2xl animate-float" style={{animationDelay: '1s'}}></div>
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl animate-float" style={{animationDelay: '2s'}}></div>
             </div>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="hero__scroll-indicator">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-soft">
           <button 
             onClick={() => {
               const projectsSection = document.getElementById('featured-projects');
               projectsSection?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="hero__scroll-button"
+            className="flex flex-col items-center gap-2 text-text-secondary transition-all duration-300 hover:text-white group"
             aria-label="Scroll to projects section"
           >
-            <span className="hero__scroll-text">Scroll to explore</span>
-            <div className="hero__scroll-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="m6 9 6 6 6-6"/>
-              </svg>
+            <span className="text-sm font-medium">Scroll to explore</span>
+            <div className="w-6 h-10 border-2 border-current rounded-full relative overflow-hidden">
+              <div className="w-1 h-3 bg-current rounded-full absolute top-2 left-1/2 -translate-x-1/2 animate-bounce"></div>
             </div>
           </button>
         </div>
       </div>
 
       {/* Background Elements */}
-      <div className="hero__background" aria-hidden="true">
-        <div className="hero__bg-grid"></div>
-        <div className="hero__bg-gradient"></div>
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-cyan/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(100,255,218,0.03)_0%,transparent_50%)] animate-rotate-slow"></div>
       </div>
     </section>
   );

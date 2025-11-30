@@ -22,13 +22,36 @@ import oracleIcon from '../assets/images/oracle.png';
 import facturacionImage from '../assets/images/Facturacion.png';
 import monketypeImage from '../assets/images/monketype.png';
 
+// WhatsApp configuration
+export const WHATSAPP_CONFIG = {
+  number: '593988162040',
+  message: `Hola Daniel, he revisado tu portafolio y me ha impresionado tu trabajo como desarrollador de software. Estoy interesado/a en explorar una colaboración profesional.
+
+Tipo de proyecto:
+[ ] Desarrollo de aplicación/software
+[ ] Consultoría técnica o arquitectura
+[ ] Colaboración en equipo de desarrollo
+[ ] Otro: ____________
+
+Detalles técnicos:
+• Stack tecnológico preferido: ____________
+• Alcance estimado: ____________
+• Timeline tentativo: ____________
+
+¿Tendrías disponibilidad para una breve reunión la próxima semana para discutir los requerimientos técnicos?`,
+  formatMessage: (customMessage?: string) => {
+    const message = customMessage || WHATSAPP_CONFIG.message;
+    return `https://wa.me/${WHATSAPP_CONFIG.number}?text=${encodeURIComponent(message)}`;
+  }
+} as const;
+
 // Personal information
 export const PERSONAL_INFO = {
   name: 'Daniel Moyolema',
   title: 'Full-Stack Developer',
-  email: 'your.email@example.com', // TODO: Update with real email
-  phone: '+1234567890', // TODO: Update with real phone
-  location: 'Your City, Country', // TODO: Update with real location
+  whatsapp: '+593988162040',
+  phone: '+593988162040',
+  location: 'Ecuador',
   bio: `Passionate full-stack developer with expertise in modern web technologies. 
         I create scalable, user-focused applications using React, .NET, and various databases. 
         Always eager to learn new technologies and solve complex problems.`,
